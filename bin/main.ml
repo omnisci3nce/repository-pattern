@@ -9,7 +9,6 @@ module User = struct
   let create id name email = { id = id; name = name; email = email }
 
   let print_user (user: t) = 
-    Printf.printf "  id: %d \n" user.id;
     Printf.printf "  name: %s \n" user.name;
     Printf.printf "  email: %s \n" user.email;
 end
@@ -30,4 +29,7 @@ let find_and_print_user id =
 let () = 
   find_and_print_user 1;
   find_and_print_user 2;
-  find_and_print_user 3
+  find_and_print_user 3;
+  users := Users.create (User.create 3 "Doge" "doge@moon.com") !users;
+  print_endline "Inserted user Doge with id 3";
+  find_and_print_user 3;
